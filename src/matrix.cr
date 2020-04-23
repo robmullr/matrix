@@ -277,6 +277,13 @@ struct Matrix(T)
     self * other.inverse
   end
 
+  # Rounds matrix entries to x decimal places
+  def round(digits)
+    Matrix.new(@rows, @columns) do |i|
+        at(i).clone.round(digits)
+    end
+  end
+
   # Yields every element of the matrix linearly: First the elements of the first
   # row, then the elements of the second row, etc.
   def each
